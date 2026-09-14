@@ -1,0 +1,2 @@
+# squidlist
+Lightweight media player
