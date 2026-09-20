@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Squidlist.Core.Models;
 
 /// <summary>
@@ -8,4 +10,21 @@ namespace Squidlist.Core.Models;
 /// remains the identity of the entry when the referenced media is moved or
 /// temporarily unavailable.
 /// </remarks>
-public sealed record PlaylistEntry(MediaId MediaId, string? PathHint = null);
+public sealed record PlaylistEntry
+{
+    [JsonConstructor]
+    public PlaylistEntry(MediaId mediaId, string? pathHint = null)
+    {
+        if (mediaId.Value == Guid.Empty)
+        {
+            throw new ArgumentException("A playlist entry must reference a media ID.", nameof(mediaId));
+        }
+
+        MediaId = mediaId;
+        PathHint = pathHint;
+    }
+
+    public MediaId MediaId { get; }
+
+    public string? PathHint { get; }
+}

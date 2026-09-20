@@ -44,6 +44,20 @@ public sealed class PlaylistTests
     }
 
     [Fact]
+    public void Playlist_entry_rejects_a_default_media_id()
+    {
+        Assert.Throws<ArgumentException>(() => new PlaylistEntry(default));
+    }
+
+    [Fact]
+    public void Playlist_rejects_null_entries()
+    {
+        var entries = new PlaylistEntry[] { null! };
+
+        Assert.Throws<ArgumentException>(() => new Playlist(entries));
+    }
+
+    [Fact]
     public void Json_round_trip_preserves_identity_path_hint_order_and_value_equality()
     {
         var playlist = new Playlist(new[]

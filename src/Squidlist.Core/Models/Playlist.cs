@@ -13,7 +13,18 @@ public sealed class Playlist : IEquatable<Playlist>
     {
         ArgumentNullException.ThrowIfNull(entries);
 
-        Entries = new ReadOnlyCollection<PlaylistEntry>(entries.ToArray());
+        var snapshot = entries.ToArray();
+        for (var index = 0; index < snapshot.Length; index++)
+        {
+            if (snapshot[index] is null)
+            {
+                throw new ArgumentException(
+                    $"Playlist entry at index {index} cannot be null.",
+                    nameof(entries));
+            }
+        }
+
+        Entries = new ReadOnlyCollection<PlaylistEntry>(snapshot);
     }
 
     public IReadOnlyList<PlaylistEntry> Entries { get; }
