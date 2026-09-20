@@ -48,6 +48,7 @@ When implementing media models:
 ## Backlog and GitHub workflow
 
 - Assign issues only when the user asks for assignment.
+- Prefer the GitHub CLI for authenticated GitHub mutations. Verify access with `gh auth status` before using commands such as `gh issue edit`, `gh pr create`, or `gh api`; if the CLI is unavailable or unauthenticated, ask the developer to install or authenticate it rather than using browser login or handling credentials in the repository.
 - For implementation work, create a focused feature branch using the `codex/` prefix unless the user specifies another name.
 - Keep commits scoped to the issue. Do not add a co-author trailer unless requested.
 - Open pull requests into `main` with a concise summary, validation details, and `Closes #N` only when the PR fully satisfies that issue.
