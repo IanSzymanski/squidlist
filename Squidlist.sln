@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squidlist.Core", "src\Squid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squidlist.Storage", "src\Squidlist.Storage\Squidlist.Storage.csproj", "{B4D986AA-E2A3-4D59-B1C7-8E16E1DB174A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squidlist.Core.Tests", "tests\Squidlist.Core.Tests\Squidlist.Core.Tests.csproj", "{F4C7A5DE-34D3-490A-8FBA-47317A651409}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{B4D986AA-E2A3-4D59-B1C7-8E16E1DB174A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4D986AA-E2A3-4D59-B1C7-8E16E1DB174A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4D986AA-E2A3-4D59-B1C7-8E16E1DB174A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C7A5DE-34D3-490A-8FBA-47317A651409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C7A5DE-34D3-490A-8FBA-47317A651409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C7A5DE-34D3-490A-8FBA-47317A651409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C7A5DE-34D3-490A-8FBA-47317A651409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
