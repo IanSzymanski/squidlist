@@ -60,11 +60,11 @@ For solution or project changes, run:
 
 ```text
 dotnet build Squidlist.sln --configuration Release
-dotnet build src\Squidlist.Core\Squidlist.Core.csproj --configuration Release --no-restore
-dotnet build src\Squidlist.Storage\Squidlist.Storage.csproj --configuration Release --no-restore
+dotnet build src/Squidlist.Core/Squidlist.Core.csproj --configuration Release --no-restore
+dotnet build src/Squidlist.Storage/Squidlist.Storage.csproj --configuration Release --no-restore
 ```
 
-Confirm the project references with `dotnet list src\Squidlist.Storage\Squidlist.Storage.csproj reference`. Add focused tests for new Core behavior, including equality and `System.Text.Json` round-tripping for identity-bearing models.
+Confirm the project references with `dotnet list src/Squidlist.Storage/Squidlist.Storage.csproj reference`. Add focused tests for new Core behavior, including equality and `System.Text.Json` round-tripping for identity-bearing models.
 
 ## Repository hygiene
 

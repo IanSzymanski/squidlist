@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $install-repo-skills to install the skills contained in this repository."
 
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
