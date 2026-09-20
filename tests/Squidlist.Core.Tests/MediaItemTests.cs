@@ -92,6 +92,19 @@ public sealed class MediaItemTests
     }
 
     [Fact]
+    public void Json_deserialization_rejects_a_default_media_id_at_the_persistence_boundary()
+    {
+        var json = JsonSerializer.Serialize(new
+        {
+            MediaId = default(MediaId),
+            Kind = MediaKind.Audio,
+            Location = (MediaLocation?)null
+        });
+
+        Assert.Throws<ArgumentException>(() => JsonSerializer.Deserialize<MediaItem>(json));
+    }
+
+    [Fact]
     public void Rejects_a_default_media_id()
     {
         Assert.Throws<ArgumentException>(() => new MediaItem(default, MediaKind.Audio));
