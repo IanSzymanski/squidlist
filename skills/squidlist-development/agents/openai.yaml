@@ -1,0 +1,7 @@
+interface:
+  display_name: "Squidlist Development"
+  short_description: "Guide Squidlist .NET 10 feature work"
+  default_prompt: "Use $squidlist-development to guide the next Squidlist backlog item."
+
+policy:
+  allow_implicit_invocation: true

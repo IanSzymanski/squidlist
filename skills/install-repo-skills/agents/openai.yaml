@@ -1,0 +1,7 @@
+interface:
+  display_name: "Install Repository Skills"
+  short_description: "Install all repo skills locally"
+  default_prompt: "Use $install-repo-skills to install the skills contained in this repository."
+
+policy:
+  allow_implicit_invocation: true
