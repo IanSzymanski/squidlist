@@ -68,4 +68,11 @@ public sealed class PlaybackTests
         Assert.Equal(queue, restored);
     }
 
+    [Fact]
+    public void Playback_queue_rejects_empty_media_ids()
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new PlaybackQueue(new[] { default(MediaId) }, false));
+    }
+
 }

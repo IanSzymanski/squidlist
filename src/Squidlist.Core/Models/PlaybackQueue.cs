@@ -13,6 +13,16 @@ public sealed class PlaybackQueue : IEquatable<PlaybackQueue>
     {
         ArgumentNullException.ThrowIfNull(mediaIds);
 
+        foreach (var mediaId in mediaIds)
+        {
+            if (mediaId.Value == Guid.Empty)
+            {
+                throw new ArgumentException(
+                    "A playback queue cannot contain an empty media ID.",
+                    nameof(mediaIds));
+            }
+        }
+
         MediaIds = new ReadOnlyCollection<MediaId>(mediaIds.ToArray());
         IsShuffled = isShuffled;
     }
