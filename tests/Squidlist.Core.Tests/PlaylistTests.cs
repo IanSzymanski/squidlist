@@ -58,6 +58,24 @@ public sealed class PlaylistTests
     }
 
     [Fact]
+    public void Json_deserialization_rejects_a_default_media_id_at_the_persistence_boundary()
+    {
+        var json = JsonSerializer.Serialize(new
+        {
+            Entries = new[]
+            {
+                new
+                {
+                    MediaId = default(MediaId),
+                    PathHint = "audio/missing.mp3"
+                }
+            }
+        });
+
+        Assert.Throws<ArgumentException>(() => JsonSerializer.Deserialize<Playlist>(json));
+    }
+
+    [Fact]
     public void Json_round_trip_preserves_identity_path_hint_order_and_value_equality()
     {
         var playlist = new Playlist(new[]
