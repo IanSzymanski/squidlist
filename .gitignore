@@ -1,0 +1,65 @@
+# Visual Studio / .NET
+.vs/
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Build and test output
+[Tt]est[Rr]esult*/
+TestResults/
+BenchmarkDotNet.Artifacts/
+coverage/
+coverage.*
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+**/project.assets.json
+**/project.nuget.cache
+**/*.nuget.g.props
+**/*.nuget.g.targets
+
+# Visual Studio extensions and tooling
+_ReSharper*/
+.ionide/
+.vscode/
+
+# Publish output
+publish/
+*.publishsettings
+
+# .NET MAUI generated app packages and platform build output
+AppPackages/
+**/AppPackages/
+*.apk
+*.aab
+*.ipa
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.appinstaller
+
+# MAUI / mobile signing material (never commit private keys)
+*.pfx
+*.p12
+*.keystore
+*.jks
+*.mobileprovision
+
+# Per-user publish profile overrides
+*.pubxml.user
+
+# Generated Windows Store association metadata
+**/Platforms/Windows/Package.StoreAssociation.xml
+
+# Operating system files
+.DS_Store
+Thumbs.db
