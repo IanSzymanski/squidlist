@@ -13,21 +13,7 @@ Use this skill only when the user asks to add, install, or synchronize the skill
 2. Inspect the immediate child directories under `<repo-root>/skills/`.
 3. Treat a directory as a skill only when it contains `SKILL.md` at its root. Preserve its complete directory, including `agents/`, `scripts/`, `references/`, and `assets/` when present.
 4. Validate each skill name and frontmatter before installation. Skip invalid entries and report the exact reason.
-   - Accept only skill directory basenames matching `^[a-z0-9]+(?:-[a-z0-9]+)*---
-name: install-repo-skills
-description: Install or synchronize all valid Codex skills found in a repository into the current agent's local skills directory.
----
-
-# Install repository skills
-
-Use this skill only when the user asks to add, install, or synchronize the skills contained in the current repository.
-
-## Discovery
-
-1. Resolve the repository root from the current workspace. Prefer the Git root when available.
-2. Inspect the immediate child directories under `<repo-root>/skills/`.
-3. Treat a directory as a skill only when it contains `SKILL.md` at its root. Preserve its complete directory, including `agents/`, `scripts/`, `references/`, and `assets/` when present.
-; reject separators, `..`, empty names, and names outside this format.
+   - Accept only skill directory basenames matching `^[a-z0-9]+(?:-[a-z0-9]+)*$`; reject separators, `..`, empty names, and names outside this format.
    - Require the root `SKILL.md` frontmatter `name` to exactly match the skill directory basename.
    - Reject symlinked/reparse-point skill directories and do not follow symlinks while discovering or copying resources.
 
