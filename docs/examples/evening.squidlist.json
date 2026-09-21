@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "name": "Evening listening",
+  "entries": [
+    {
+      "mediaId": "64061c81-cd34-44b4-bb38-ab45f415829b",
+      "pathHint": "audio/Evening/First track.mp3"
+    },
+    {
+      "mediaId": "7acd7152-8cf8-4503-a23d-6941a637da68"
+    },
+    {
+      "mediaId": "64061c81-cd34-44b4-bb38-ab45f415829b",
+      "pathHint": "audio/Evening/First track.mp3"
+    }
+  ],
+  "metadata": {
+    "description": "A local playlist with a repeated track and an unresolved reference."
+  }
+}
