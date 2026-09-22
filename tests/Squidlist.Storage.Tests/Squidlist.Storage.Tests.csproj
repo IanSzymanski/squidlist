@@ -15,4 +15,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\docs\examples\evening.squidlist.json" Link="Fixtures\evening.squidlist.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
