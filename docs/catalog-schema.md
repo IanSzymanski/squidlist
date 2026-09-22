@@ -38,8 +38,8 @@ Fingerprint status is independent of availability: a missing file may have a
 previously computed usable fingerprint. Ready means fingerprint data is usable
 for the recorded observation; Stale means it needs recomputation after change;
 Failed means the last attempt failed; NotComputed means no attempt has succeeded.
-Issue #10 will define algorithm, fingerprint payload, storage relationship, and
-ambiguous match results. This schema supplies status only and performs no hashing
+The [fingerprint specification](media-fingerprints.md) defines the algorithm,
+companion payload, storage relationship, and ambiguous match results. This schema supplies status only and performs no hashing
 or matching. Size and modification time alone must never trigger automatic relinking.
 
 ## Serialization and compatibility
