@@ -30,12 +30,13 @@ public abstract record MediaScanEvent
         public MediaKind Kind { get; }
     }
 
-    /// <summary>A failed file or subtree. Null location denotes the root itself.</summary>
+    /// <summary>A failed file or subtree beneath the root. Root-wide failures throw StorageException.</summary>
     public sealed record Failed : MediaScanEvent
     {
-        public Failed(MediaLocation? location, StorageFailure failure)
+        public Failed(MediaLocation location, StorageFailure failure)
         {
-            if (location is not null && !location.IsRelative)
+            ArgumentNullException.ThrowIfNull(location);
+            if (!location.IsRelative)
             {
                 throw new ArgumentException("Scan locations must be relative to the root.", nameof(location));
             }
@@ -47,7 +48,7 @@ public abstract record MediaScanEvent
             Failure = failure;
         }
 
-        public MediaLocation? Location { get; }
+        public MediaLocation Location { get; }
         public StorageFailure Failure { get; }
     }
 }

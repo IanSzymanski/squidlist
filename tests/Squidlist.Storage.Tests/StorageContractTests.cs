@@ -68,13 +68,12 @@ public sealed class StorageContractTests
     }
 
     [Fact]
-    public void Scan_failures_represent_inaccessible_subtrees_and_root_failures()
+    public void Scan_failures_represent_subtrees_but_reject_root_level_events()
     {
         var subtree = new MediaScanEvent.Failed(MediaLocation.Relative("private"), StorageFailure.AccessDenied);
-        var root = new MediaScanEvent.Failed(null, StorageFailure.IoError);
         Assert.Equal("private", subtree.Location!.Path);
         Assert.Equal(StorageFailure.AccessDenied, subtree.Failure);
-        Assert.Null(root.Location);
+        Assert.Throws<ArgumentNullException>(() => new MediaScanEvent.Failed(null!, StorageFailure.IoError));
         Assert.Throws<ArgumentException>(() => new MediaScanEvent.Failed(
             MediaLocation.Absolute("C:/private"), StorageFailure.AccessDenied));
     }
@@ -87,6 +86,6 @@ public sealed class StorageContractTests
         Assert.Same(cause, error.InnerException);
         Assert.Equal(StorageFailure.IoError, error.Failure);
         Assert.Throws<ArgumentOutOfRangeException>(() => new StorageException((StorageFailure)99, "Invalid"));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new MediaScanEvent.Failed(null, (StorageFailure)99));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new MediaScanEvent.Failed(MediaLocation.Relative("private"), (StorageFailure)99));
     }
 }
