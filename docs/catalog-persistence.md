@@ -19,7 +19,9 @@ included until that root policy exists.
 The store checks directory existence itself, rejects unavailable root states, and
 requires a path absolute on the executing platform. It rejects reparse points in
 the root ancestor chain, metadata directory, or catalog path. It does not create
-missing roots. The root validator runs again immediately before the commit point.
+missing roots. Physical root availability is checked again before staging (so a
+disappeared root cannot be recreated while creating `.squidlist`); the root
+validator runs again immediately before the commit point.
 This is not protection against a malicious process racing directory replacement;
 callers must use a trusted local root and serialize writes per root, as required by
 [the storage contracts](storage-contracts.md).
@@ -43,7 +45,8 @@ StorageFailure code rather than show raw exception text.
 ## Atomic save and cancellation
 
 1. Validate root and read/validate any existing catalog.
-2. Write a unique `catalog.<guid>.tmp` file in the catalog directory.
+2. Recheck physical root availability, then create `.squidlist` if needed and write a unique
+   `catalog.<guid>.tmp` file in the catalog directory.
 3. Flush asynchronous buffers and request a durable disk flush; close the file.
 4. Revalidate root and check cancellation.
 5. Commit with File.Replace for an existing catalog or a non-overwriting File.Move

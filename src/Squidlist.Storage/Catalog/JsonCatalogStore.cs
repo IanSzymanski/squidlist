@@ -67,6 +67,9 @@ public sealed class JsonCatalogStore : ICatalogStore
                 var path = await ValidatePathAsync(root, cancellationToken).ConfigureAwait(false);
                 // Never silently replace damaged data or a schema this application cannot read.
                 var previous = await ReadAsync(path, cancellationToken).ConfigureAwait(false);
+                // Recheck the physical root before creating the metadata directory so a
+                // disappeared root is never recreated by Directory.CreateDirectory.
+                EnsureRootDirectory(Path.GetFullPath(root.Path!));
                 var directory = Path.GetDirectoryName(path)!;
                 Directory.CreateDirectory(directory);
                 CheckDirectory(directory);
@@ -159,6 +162,22 @@ public sealed class JsonCatalogStore : ICatalogStore
         if ((attributes & FileAttributes.ReparsePoint) != 0 || (attributes & FileAttributes.Directory) == 0)
         {
             throw new StorageException(StorageFailure.Conflict, "Catalog directories must be ordinary local directories.");
+        }
+    }
+
+    private static void EnsureRootDirectory(string path)
+    {
+        try
+        {
+            CheckDirectory(path);
+        }
+        catch (DirectoryNotFoundException exception)
+        {
+            throw new StorageException(StorageFailure.RootUnavailable, "The media root no longer exists.", exception);
+        }
+        catch (FileNotFoundException exception)
+        {
+            throw new StorageException(StorageFailure.RootUnavailable, "The media root no longer exists.", exception);
         }
     }
 
